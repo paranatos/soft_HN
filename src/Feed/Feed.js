@@ -18,7 +18,7 @@ export default class Feed extends Component {
         return res.json();
       })
       .then(res => {
-        return res.splice(0, 10);
+        return res.splice(0, 50);
       })
       .then(res => {
         let storys = res.map(id => {
