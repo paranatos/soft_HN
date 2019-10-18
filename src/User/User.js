@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Story from "../Story/Story";
-import Loading from "../Loading/Loading";
+import Story from "../components/Story/Story";
+import Loading from "../components/Loading/Loading";
 
 export default class USer extends Component {
   constructor(props) {

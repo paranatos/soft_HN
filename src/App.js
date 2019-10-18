@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Feed from "./Feed/Feed";
-import Thread from "./Thread/Thread";
+import Feed from "./components/Feed/Feed";
+import Thread from "./components/Thread/Thread";
 import User from "./User/User";
 
 export default function App() {
