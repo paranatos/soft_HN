@@ -23,6 +23,11 @@ export default class Thread extends Component {
         return res.kids;
       })
       .then(commentsId => {
+        if (commentsId === undefined) {
+          this.setState({ loadedComments: true });
+          this.comments = null;
+          return Promise.reject("No comments");
+        }
         return Promise.allSettled(
           commentsId.map(id => {
             return fetch(
@@ -49,7 +54,12 @@ export default class Thread extends Component {
         this.setState({ loadedComments: true });
       })
       .catch(err => {
-        console.log(err);
+        if (err === "No comments") {
+          return;
+        } else {
+          console.error(err);
+          this.setState({ error: err });
+        }
       });
   }
   render() {

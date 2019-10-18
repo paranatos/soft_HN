@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Story from "../Story/Story";
+import Loading from "../Loading/Loading";
 
 export default class Feed extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class Feed extends Component {
         return res.json();
       })
       .then(res => {
-        return res.splice(0, 50);
+        return res.splice(0, 50); // TODO lazy load
       })
       .then(res => {
         let storys = res.map(id => {
@@ -53,9 +54,9 @@ export default class Feed extends Component {
       });
   }
   render() {
-    let { isLoaded, error } = this.state;
+    let { isLoaded, error, type } = this.state;
     if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <Loading>Fetching {type}-storys</Loading>;
     }
     if (error) {
       return <div>Oops error occurred</div>;

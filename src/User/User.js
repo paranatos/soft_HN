@@ -52,7 +52,7 @@ export default class USer extends Component {
       })
       .then(posts => {
         this.posts = posts.map(post => {
-          console.log(post);
+          //console.log(post);
           return <Story key={post.id} {...post}></Story>;
         });
         this.setState({ loadedPosts: true });

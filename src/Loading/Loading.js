@@ -3,7 +3,11 @@ import React, { Component } from "react";
 export default class Loading extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: props.children };
+    if (Array.isArray(props.children)) {
+      this.state = { text: props.children.join("") }; // TODO rewrite it mb?
+    } else {
+      this.state = { text: props.children };
+    }
   }
   componentDidMount() {
     this.timerId = setInterval(() => {
